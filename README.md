@@ -49,6 +49,15 @@ The AutomL config can be as seen below.
  - Once the model is run we can find different model with different accuracies.
  - the best model is
  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/best%20model.png "Logo Title Text 1")
+ - Various configuration used in AutoML
+  1. Since the probelm is classification we choose task as classification.
+  2. TimeOut is set to 30 minutes sicne the dataset is only 800 rows approximately.
+  3. Primary metric is accuracy as we are trying to maximise the accuracy.
+  4. label column is the column we are trying to predict here outcome .
+  5. Compute target is the target cluster where the computation needs to be done
+  6. N_cross_Validations=5 the number of k fold cross validations, since the dataset is small choosen 5
+  7. Iterations: Number of iterations to be run 24 , so this checks 24 automl models Max_concurernt_iterations: 8 number of parallel runs at a time, choosing this too 
+  8. high impact performance so choosen 8
  
 
 ### Results
@@ -67,7 +76,7 @@ The AutomL config can be as seen below.
   
 ## Screen Recording
 
-
+Here is the link of screencast.
 https://www.youtube.com/watch?v=uFjvg4zDgIc
 
 
@@ -75,3 +84,5 @@ https://www.youtube.com/watch?v=uFjvg4zDgIc
 
  - The model can be converted to ONNX format and deploy on Edge devices.
  - Applciation insights can be enabled.
+ - Over-fitting and imbalanced data are common pitfalls when you build machine learning models. By default, Azure Machine Learning's automated machine learning provides charts and metrics to help you identify these risks, and implements best practices to help mitigate them.
+ - Using more data is the simplest and best possible way to prevent over-fitting, and as an added bonus typically increases accuracy

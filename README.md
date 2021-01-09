@@ -69,6 +69,7 @@ The AutomL config can be as seen below.
 ## Model Deployment
   - Before Deploying the model we need to pack all the dependencies into conda environment file whcih are included in the repository. Once we pack the dependencies a docker conatiner is built and pushed to Azure Container isntance. We need to consume the ACI instance using a rest Endpoint. The endpoint deployed will be seen in endpoints section of the Azure Machine learning studio. Before deploying an endpoint we need to define scoring script which defines the entrypoint to the deployment whcih is given in repository.
 ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/deplayement%20status.pngg "Logo Title Text 1")
+ - This shows the Endpoint is successfully deployed and is healthy.Now we can consume the endpoint using scoring URL genereated after deployment.
 ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/endpointhealthy.PNG "Logo Title Text 1")
 
   - Here we are testing two datapoints and we are expecting two outputs

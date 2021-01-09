@@ -1,48 +1,77 @@
 *NOTE:* This file is a template that you can use to create the README for your project. The *TODO* comments below will highlight the information you should be sure to include.
 
-# Your Project Title Here
+# Capstone Project (Udacity Microsoft Machine Learning Program)
 
-*TODO:* Write a short introduction to your project.
+The main goal of the project is to utilize Azure Machine Learning Hyper Drive and Auto Ml capabilities to build a machine learning model and deploy the best model based based on the performance evaluation metric.
 
-## Project Set Up and Installation
-*OPTIONAL:* If your project has any special installation steps, this is where you should put it. To turn this project into a professional portfolio project, you are encouraged to explain how to set up this project in AzureML.
+## Project Architecture
+
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/capstone-diagram.png "Logo Title Text 1")
 
 ## Dataset
+The dataset can be be found on kaggle.
+Short discription of the dataset id=s below.
 
-### Overview
-*TODO*: Explain about the data you are using and where you got it from.
+1. Pregnancy : Number Of Pregnacies happend
+2. Glucose : Blood Glucose Levels
+3. Blood Pressure : Blood Pressure Levels
+4. Skin ThickNess : Triceps Skin Thickness
+5. Insulin : Blood Insulin Levels
+6. BMI :Body Mass Index
+7. Diabetes :Diabetes Function
+8. Age : Age Of Patient in Years
+9. Outcome : 1 0r 0 to indicate whether a patient has diabetes or Not
 
-### Task
-*TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.
 
-### Access
-*TODO*: Explain how you are accessing the data in your workspace.
+## Machine laerning with the dataset
 
-## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
+Once we have registered the dataset in the azure workspace we have to run two models ie. by automl and by hyperturnning method and find out the best accuracy provided by which of these models.
+
+### Access the dataset in the workspace
+To access the dataset in the workspace we have to upload the dataset from the local files.We can also get the dataset by provideing the url of the dataset.
+
+## Hyperdrive Run
+  - The model is Logistic regression I have choosen Inverse Regularisation factor (--C) which penalises the model to prevent over fitting and maximum number of     iteration(--Max_iter) as other Hyperparameter to be tuned.
+  - I have choosen Bandit policy as it terminates the model building if any of the conditions like slack factor, slack amout, delay interval are not met as per prescribed limits during maximizing the accuracy.
+  - Once we pass the Hyper parameters using train.py and submit the Job Hyper Drive will create number of jobs based on the parameters given in Hyperdrive configuration using the combinations of Hyper parameters.
+  - After running the modelwe need to save the model with best accuracy.In this case the model is 
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/Hdrivebestrunmetrics.PNG "Logo Title Text 1")
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+The hyperdrive best model parameters are
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/hdrivebestrunparams.PNG "Logo Title Text 1")
+This shows the successful completion of Hyperdrive model Running along with best parameters and accuracy.
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
-
-## Hyperparameter Tuning
-*TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
-
+## AutoML Run
+  - Here we are going to build a automl model for our problem. The Dataste is registered and converted to Tabular Dataset using Tabular dataset Factory module.
+The AutomL config can be as seen below.
+ ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/automlconfig.PNG "Logo Title Text 1")
+ - Once the model is run we can find different model with different accuracies.
+ - the best model is
+ ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/best%20model.png "Logo Title Text 1")
+ 
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+- After all the Runs AutomL gave voting ensemble model as best model with accuracy of 78.39 better than *HYperdrive model
+ 
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+  - Before Deploying the model we need to pack all the dependencies into conda environment file whcih are included in the repository. Once we pack the dependencies a docker conatiner is built and pushed to Azure Container isntance. We need to consume the ACI instance using a rest Endpoint. The endpoint deployed will be seen in endpoints section of the Azure Machine learning studio. Before deploying an endpoint we need to define scoring script which defines the entrypoint to the deployment whcih is given in repository.
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/deplayement%20status.pngg "Logo Title Text 1")
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/endpointhealthy.PNG "Logo Title Text 1")
 
+  - Here we are testing two datapoints and we are expecting two outputs
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/predicted%20values.png "Logo Title Text 1")
+  
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. Remember that the screencast should demonstrate:
-- A working model
-- Demo of the deployed  model
-- Demo of a sample request sent to the endpoint and its response
 
-## Standout Suggestions
-*TODO (Optional):* This is where you can provide information about any standout suggestions that you have attempted.
+
+https://www.youtube.com/watch?v=uFjvg4zDgIc
+
+
+## Future Enhancements 
+
+ - The model can be converted to ONNX format and deploy on Edge devices.
+ - Applciation insights can be enabled.

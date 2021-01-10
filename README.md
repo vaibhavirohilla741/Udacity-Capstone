@@ -36,6 +36,14 @@ To access the dataset in the workspace we have to upload the dataset from the lo
   - Once we pass the Hyper parameters using train.py and submit the Job Hyper Drive will create number of jobs based on the parameters given in Hyperdrive configuration using the combinations of Hyper parameters.
   - After running the modelwe need to save the model with best accuracy.In this case the model is 
   ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/Hdrivebestrunmetrics.PNG "Logo Title Text 1")
+  
+  ### Hyperdrive Parameters
+  Wee have define a search space with two parameters, --C and --max-iter. The --max-iter can have a uniform distribution with 300 as the best input and --C has the best value as 1 .
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/hdrivebestrunparams.PNG "Logo Title Text 1")
+  
+  
+### Run Widget
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/HyperdriveRunDetails.PNG "Logo Title Text 1")
 
 ### Results
 The hyperdrive best model parameters are
@@ -49,7 +57,11 @@ The AutomL config can be as seen below.
  - Once the model is run we can find different model with different accuracies.
  - the best model is
  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/best%20model.png "Logo Title Text 1")
- - Various configuration used in AutoML
+ 
+ 
+## AutoMl Parameters
+
+Various configuration used in AutoML
   1. Since the probelm is classification we choose task as classification.
   2. TimeOut is set to 30 minutes sicne the dataset is only 800 rows approximately.
   3. Primary metric is accuracy as we are trying to maximise the accuracy.
@@ -58,6 +70,20 @@ The AutomL config can be as seen below.
   6. N_cross_Validations=5 the number of k fold cross validations, since the dataset is small choosen 5
   7. Iterations: Number of iterations to be run 24 , so this checks 24 automl models Max_concurernt_iterations: 8 number of parallel runs at a time, choosing this too 
   8. high impact performance so choosen 8
+  
+## AutoML Best Model 
+
+- After all the Runs AutomL gave voting ensemble model as best model with accuracy of 78.39 better than HYperdrive model.VotingEnsemble model works on taking the majority voting of underlying models and choose the model with highest votes as best model.
+- The Fitted Model Parameters are as shown below.
+![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/best%20model.png "Logo Title Text 1")
+
+  ### Parameters
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/automlfittedmodelparams.PNG "Logo Title Text 1")
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/automlfittedmodelparams1.PNG "Logo Title Text 1")
+  
+  ### Run Widget
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/automlmodelrunstatus.PNG "Logo Title Text 1")
+ 
  
 
 ### Results

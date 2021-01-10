@@ -72,6 +72,14 @@ The AutomL config can be as seen below.
  - This shows the Endpoint is successfully deployed and is healthy.Now we can consume the endpoint using scoring URL genereated after deployment.
 ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/endpointhealthy.PNG "Logo Title Text 1")
 
+  
+  
+## Endpoint Consumption
+
+  - Now we can consume the endpoint using scoring URL genereated after deployment.
+  - The Endpoint is consumed using endpoint.py where we use requests library for cosnuming the endpoint.
+  - The sample input to the endpoint is as below
+  ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/endpoint%20input.png "Logo Title Text 1")
   - Here we are testing two datapoints and we are expecting two outputs
   ![alt text](https://github.com/vaibhavirohilla741/Udacity-Capstone/blob/main/screenshots/predicted%20values.png "Logo Title Text 1")
   
